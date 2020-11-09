@@ -18,14 +18,14 @@
           </tr>
           <tr>
     	      <th>follows</th>
-    	      <th><%= @user.followings.count %></th>
+    	      <td><%= link_to @user.followings.count, follows_user_path(@user)%></td>
           </tr><tr>
     	      <th>followers</th>
-    	      <th><%= @user.followers.count %></th>
+    	      <td><%= link_to @user.followers.count, followers_user_path(@user)%></td>
           </tr>
         </tbody>
         </table>
-
+    <td><%= render "relationships/follow_button", user: @user %></td>
     <%= link_to "" ,edit_user_path(@user),class:"col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 
 

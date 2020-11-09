@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     @book = Book.new
+    @user = current_user
   end
 
   def edit
@@ -24,6 +25,18 @@ class UsersController < ApplicationController
       flash.now[:notice] = "error"
       render "edit"
     end
+  end
+
+  def follows
+    @user = User.find(params[:id])
+    @users = @user.followings
+    @book = Book.new
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
+    @book = Book.new
   end
 
   private
